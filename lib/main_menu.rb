@@ -1,10 +1,3 @@
-require 'pry'
-require './list_characters.rb'
-require './list_spells.rb'
-require './create_character.rb'
-require './delete_character.rb'
-require './select_character.rb'
-
 def ruby_clear
   system "clear" or system "cls"
 end
@@ -98,8 +91,8 @@ def menu_loop
   end
 end
 
-menu_loop
+# menu_loop
 
 
-binding.pry
-puts "done"
+# binding.pry
+# puts "done"

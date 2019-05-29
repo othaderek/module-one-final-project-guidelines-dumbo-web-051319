@@ -12,7 +12,7 @@ def character_name_prompt
   puts "********************************"
   puts ""
 
-  character_name = gets.chomp
+  name = gets.chomp
 
 end
 
@@ -81,8 +81,9 @@ end
 
 def create_character_prompt
   character_create_splash
-  character_name_prompt
-  character_race_prompt
-  character_class_prompt
+  c_name = character_name_prompt
+  c_race = character_race_prompt
+  c_class = character_class_prompt
+  character4 = Character.create(name: c_name, race: c_race, class_name: c_class)
   character_save
 end

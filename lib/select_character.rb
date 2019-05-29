@@ -1,5 +1,3 @@
-require 'pry'
-
 def select_character_prompt
 
   puts ""

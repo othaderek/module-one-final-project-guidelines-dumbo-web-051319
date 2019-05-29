@@ -14,4 +14,14 @@ def list_characters_prompt
   sleep 0.6
   puts ".".center(32)
 
+  Character.all.each do |character|
+    puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+    puts ""
+    puts "Name: #{character.name}"
+    puts "Race: #{character.race}"
+    puts "Class: #{character.class_name}"
+    puts ""
+    puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+  end
+  
 end
