@@ -1,6 +1,5 @@
 require_relative '../config/environment'
 
 menu_loop
-
-binding.pry
+# binding.pry
 puts "Goodbye"

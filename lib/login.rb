@@ -15,6 +15,7 @@ def login
     if pw == p.password
       puts "Success!"
       puts "Welcome #{p.name}"
+      input_selector(p)
     else
       list_input_prompt
     end
@@ -25,6 +26,8 @@ end
 
 def list_input_prompt
   prompt = TTY::Prompt.new
-  input = prompt.select("Welcome!", ["Login", "Create User"])
+  input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
+  # binding.pry
+  input = input.strip
   input_selector(input)
 end

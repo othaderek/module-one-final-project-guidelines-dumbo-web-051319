@@ -42,34 +42,45 @@ end
 
 
 def input_selector(input)
+  # binding.pry
 
   case input
   when "Login"
     ruby_clear
     login
-  when "2"
+  when "Create User"
     ruby_clear
-    list_spells_prompt
-  when "3"
-    ruby_clear
-    create_character_prompt
-    ruby_clear
-  when "4"
-    ruby_clear
-    delete_character_prompt
-  when "5"
-    ruby_clear
-    select_character_prompt
-    character_paperdoll
-    ruby_clear
-  when "q"
-    ruby_clear
-    exit_program_prompt
+    create_user
   else
-    ruby_clear
-    invalid_input_prompt
+  # when "3"
+  #   ruby_clear
+  #   create_character_prompt
+  #   ruby_clear
+  # when "4"
+  #   ruby_clear
+  #   delete_character_prompt
+  # when "5"
+  #   ruby_clear
+  #   select_character_prompt
+  #   character_paperdoll
+  #   ruby_clear
+  # when "q"
+  #   ruby_clear
+  #   exit_program_prompt
+  # else
+  #   ruby_clear
+  #   invalid_input_prompt
   end
 
+end
+
+def create_user
+  prompt = TTY::Prompt.new
+  user_name = prompt.ask("Enter you username:")
+  user_pw = prompt.mask("Password")
+  user = User.create(name: user_name, password: user_pw)
+  puts "Great work #{user_pw}!!"
+  menu_loop
 end
 
 
