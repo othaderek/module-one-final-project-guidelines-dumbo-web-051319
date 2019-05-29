@@ -1,25 +1,3 @@
-def ruby_clear
-  system "clear" or system "cls"
-end
-
-def splash
-  puts "                         ____   ___   ____     "
-  puts "                        |  _ \\ ( _ ) |  _ \\  "
-  puts "                        | | | |/ _ \\/\\ | | | "
-  puts "                        | |_| | (_>  < |_| |   "
-  puts "                        |____/ \\___/\\/____/  "
-  puts "            ____ _                          _                "
-  puts "           / ___| |__   __ _ _ __ __ _  ___| |_ ___ _ __     "
-  puts "          | |   | '_ \\ / _` | '__/ _` |/ __| __/ _ \\ '__|  "
-  puts "          | |___| | | | (_| | | | (_| | (__| ||  __/ |       "
-  puts "           \\____|_| |_|\\__,_|_|  \\__,_|\\___|\\__\\___|_| "
-  puts "                 _____                _                      "
-  puts "                / ___|_ __ ___   __ _| |_ __  _ __           "
-  puts "               | |   | '__/ _ \\/ _` | __/ _ \\| '__|        "
-  puts "               | |___| | |  __/ (_| | || (_) | |             "
-  puts "                \\____|_|  \\___|\\__,_|\\__\\___/|_|        "
-  puts ""
-end
 
 def exit_program_prompt
   puts ""
@@ -29,62 +7,61 @@ def exit_program_prompt
   puts ""
 end
 
-def invalid_input_prompt
+def list_input_prompt(user)
   puts ""
-  puts "********************************"
-  puts "****     Invalid Input      ****"
-  puts "********************************"
-  puts ""
-end
-
-def list_input_prompt
-  puts ""
-  puts "List characters:  1".center(65)
-  puts "List spells:      2".center(65)
-  puts "Create character: 3".center(65)
-  puts "Delete character: 4".center(65)
-  puts "Select Character: 5".center(65)
-  puts "Exit program:     q".center(65)
+  if user.characters
+    user.characters.each_with_index { |character, index| puts "                         #{index+1}:  #{character.name}" }
+  end
+  puts "                         C:  Create character"
+  puts "                         S:  Create spell"
+  puts "                         q:  Exit program"
   puts ""
 end
 
-def input_selector(input)
+def input_selector(input, length)
 
-  case input
-  when "1"
-    ruby_clear
-    list_characters_prompt
-  when "2"
-    ruby_clear
-    list_spells_prompt
-  when "3"
-    ruby_clear
-    create_character_prompt
-    ruby_clear
-  when "4"
-    ruby_clear
-    delete_character_prompt
-  when "5"
-    ruby_clear
-    select_character_prompt
-    character_paperdoll
-    ruby_clear
-  when "q"
-    ruby_clear
-    exit_program_prompt
+  # binding.pry
+  intput = input.to_i
+  if intput > 0 && intput < length +1
+    case intput
+    when 0..length
+      puts "Is character"
+    end
   else
-    ruby_clear
-    invalid_input_prompt
+    case input
+    when "C"
+      ruby_clear
+      puts "create character"
+      
+    when "S"
+      ruby_clear
+      puts "Create Spell"
+      ruby_clear
+    when "q"
+      ruby_clear
+      exit_program_prompt
+    else
+      ruby_clear
+      invalid_input_prompt
+    end
   end
 
 end
 
-def menu_loop
+def menu_loop(user)
+  # test data
+  user1 = User.all[3]
+  user2 = User.new
+  character1 = Character.all[0]
+  character2 = Character.all[1]
+  userChar1 = UserCharacter.all[4]
+
   input = ""
   while input != "q"
     splash
-    list_input_prompt
+    list_input_prompt(user1)
     input = gets.chomp
-    input_selector(input)
+    input_selector(input, user1.characters.length)
   end
+
 end

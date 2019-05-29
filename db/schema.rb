@@ -28,11 +28,6 @@ ActiveRecord::Schema.define(version: 20190529151503) do
     t.string "description"
   end
 
-  create_table "user_character", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "character_id"
-  end
-
   create_table "user_characters", force: :cascade do |t|
     t.integer "user_id"
     t.integer "character_id"
