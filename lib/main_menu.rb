@@ -20,7 +20,6 @@ end
 
 def input_selector(input, length)
 
-  # binding.pry
   intput = input.to_i
   if intput > 0 && intput < length +1
     case intput
@@ -32,7 +31,7 @@ def input_selector(input, length)
     when "C"
       ruby_clear
       puts "create character"
-      
+
     when "S"
       ruby_clear
       puts "Create Spell"
