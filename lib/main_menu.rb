@@ -1,3 +1,4 @@
+
 def exit_program_prompt
   puts ""
   puts "********************************"
@@ -6,67 +7,52 @@ def exit_program_prompt
   puts ""
 end
 
-def invalid_input_prompt
+def list_input_prompt(user)
   puts ""
-  puts "********************************"
-  puts "****     Invalid Input      ****"
-  puts "********************************"
-  puts ""
-end
-
-def list_input_prompt
-  puts ""
-  puts "List characters:  1".center(65)
-  puts "List spells:      2".center(65)
-  puts "Create character: 3".center(65)
-  puts "Delete character: 4".center(65)
-  puts "Select Character: 5".center(65)
-  puts "Exit program:     q".center(65)
+  if user.characters
+    user.characters.each_with_index { |character, index| puts "                         #{index+1}:  #{character.name}" }
+  end
+  puts "                         C:  Create character"
+  puts "                         S:  Create spell"
+  puts "                         q:  Exit program"
   puts ""
 end
 
-def input_selector(input)
+def input_selector(input, length)
 
-  case input
-  when "1"
-    ruby_clear
-    list_characters_prompt
-  when "2"
-    ruby_clear
-    list_spells_prompt
-  when "3"
-    ruby_clear
-    create_character_prompt
-    ruby_clear
-  when "4"
-    ruby_clear
-    delete_character_prompt
-  when "5"
-    ruby_clear
-    select_character_prompt
-    character_paperdoll
-    ruby_clear
-  when "q"
-    ruby_clear
-    exit_program_prompt
+  intput = input.to_i
+  if intput > 0 && intput < length +1
+    puts "Is character"
+    intput -1
   else
-    ruby_clear
-    invalid_input_prompt
+    case input
+    when "C"
+      ruby_clear
+      puts "create character"
+    when "S"
+      ruby_clear
+      puts "Create Spell"
+      ruby_clear
+    when "q"
+      ruby_clear
+      exit_program_prompt
+    else
+      ruby_clear
+      invalid_input_prompt
+    end
   end
 
 end
 
 def menu_loop(user)
 
-  user1 = User.all[0]
-  character1 = Character.all[0]
-  character2 = Character.all[1]
-
   input = ""
   while input != "q"
     splash
-    list_input_prompt
+    list_input_prompt(user)
     input = gets.chomp
-    input_selector(input)
+    index = input_selector(input, user.characters.length)
+    character_menu_loop(user.characters[index])
   end
+
 end

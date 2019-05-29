@@ -20,3 +20,11 @@ def splash
   puts "                \\____|_|  \\___|\\__,_|\\__\\___/|_|        "
   puts ""
 end
+
+def invalid_input_prompt
+  puts ""
+  puts "********************************"
+  puts "****     Invalid Input      ****"
+  puts "********************************"
+  puts ""
+end
