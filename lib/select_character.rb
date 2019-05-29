@@ -59,27 +59,35 @@ def ascii_knight
 
 end
 
-def show_stats
+def show_stats(character)
 
-  puts "+-------------------------------+"
-  puts "|                               |"
-  puts "| Name:______________________   |"
-  puts "|                               |"
-  puts "| Race:______________________   |"
-  puts "|                               |"
-  puts "| Class:_____________________   |"
-  puts "|                               |"
-  puts "+-------------------------------+"
+  puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+  puts "||"
+  puts "||    Name:      #{character.name}"
+  puts "||"
+  puts "||    Race:      #{character.race}"
+  puts "||"
+  puts "||    Class:     #{character.class_name}"
+  puts "||"
+  puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
 
 end
 
-def char_input_selector(input)
+def char_input_selector(input, index)
 
   case input
   when "l".downcase
-    puts "Load Last"
+    if index == 0
+      index = (Character.all.length) -1
+    else
+      index += -1
+    end
   when "n".downcase
-    puts "Load Next"
+    if index == (Character.all.length) -1
+      index = 0
+    else
+      index += 1
+    end
   when "s".downcase
     puts "List Spells"
   when "m".downcase
@@ -88,15 +96,17 @@ def char_input_selector(input)
     puts "Invalid input"
   end
 
+  index
 end
 
 def character_paperdoll
   c_input = ""
+  index = 0
+  # ascii_wizard
   while c_input.downcase != "m"
-    ascii_wizard
-    show_stats
+    show_stats(Character.all[index])
     select_character_nav
     c_input = gets.chomp
-    char_input_selector(c_input)
+    index = char_input_selector(c_input, index)
   end
 end

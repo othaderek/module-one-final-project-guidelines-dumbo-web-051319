@@ -84,6 +84,6 @@ def create_character_prompt
   c_name = character_name_prompt
   c_race = character_race_prompt
   c_class = character_class_prompt
-  character4 = Character.create(name: c_name, race: c_race, class_name: c_class)
+  Character.create(name: c_name, race: c_race, class_name: c_class)
   character_save
 end
