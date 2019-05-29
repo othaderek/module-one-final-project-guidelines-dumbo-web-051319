@@ -27,8 +27,6 @@ def exit_program_prompt
   puts "****    Exiting Program     ****"
   puts "********************************"
   puts ""
-1
-
 end
 
 def invalid_input_prompt
@@ -90,9 +88,3 @@ def menu_loop
     input_selector(input)
   end
 end
-
-# menu_loop
-
-
-# binding.pry
-# puts "done"

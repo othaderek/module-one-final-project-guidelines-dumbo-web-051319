@@ -1,4 +1,4 @@
-def list_spells_prompt
+def list_spells_prompt(character)
 
   puts ""
   puts "********************************"
@@ -13,5 +13,7 @@ def list_spells_prompt
   puts ".".center(32)
   sleep 0.6
   puts ".".center(32)
+
+  character.spells
 
 end

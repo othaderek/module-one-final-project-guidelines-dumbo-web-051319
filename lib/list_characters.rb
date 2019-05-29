@@ -23,5 +23,7 @@ def list_characters_prompt
     puts ""
     puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
   end
-  
+
+  puts "Enter to return to main menu."
+  gets.chomp
 end
