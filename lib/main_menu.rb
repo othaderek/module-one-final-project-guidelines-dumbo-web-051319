@@ -22,16 +22,13 @@ def input_selector(input, length)
 
   intput = input.to_i
   if intput > 0 && intput < length +1
-    case intput
-    when 0..length
-      puts "Is character"
-    end
+    puts "Is character"
+    intput -1
   else
     case input
     when "C"
       ruby_clear
       puts "create character"
-
     when "S"
       ruby_clear
       puts "Create Spell"
@@ -48,19 +45,14 @@ def input_selector(input, length)
 end
 
 def menu_loop(user)
-  # test data
-  user1 = User.all[3]
-  user2 = User.new
-  character1 = Character.all[0]
-  character2 = Character.all[1]
-  userChar1 = UserCharacter.all[4]
 
   input = ""
   while input != "q"
     splash
-    list_input_prompt(user1)
+    list_input_prompt(user)
     input = gets.chomp
-    input_selector(input, user1.characters.length)
+    index = input_selector(input, user.characters.length)
+    character_menu_loop(user.characters[index])
   end
 
 end
