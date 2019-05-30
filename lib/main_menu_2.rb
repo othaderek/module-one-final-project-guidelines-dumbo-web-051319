@@ -21,6 +21,11 @@ def splash
   puts ""
 end
 
+def get_pause
+  puts "Press the any key to return to continue."
+  gets.chomp
+end
+
 def spinner
   ruby_clear
   spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :shark)
@@ -28,10 +33,6 @@ def spinner
   sleep(2.5) # Perform task
   spinner.stop('Done!') # Stop animation
   ruby_clear
-end
-
-def list_characters
-
 end
 
 def main_menu_list_input_prompt
@@ -44,10 +45,10 @@ def main_menu_input_selector(input, user)
   case input
   when "List Characters"
     user.print_characters
-
+    get_pause
   when "List Spells"
     user.print_spells
-
+    get_pause
   when "Create Character"
     puts "Creating Character"
 
@@ -77,6 +78,7 @@ def main_menu_loop(user)
   while main_input != "Exit"
     splash
     main_input = main_menu_list_input_prompt
-    user = main_menu_input_selector(main_input, user)
+    main_menu_input_selector(main_input, user)
+    user = user.refreshing
   end
 end

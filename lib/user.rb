@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
       puts ""
       puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
     end
-    puts "Press the any key to return to continue."
-    gets.chomp
   end
 
   def print_spells
@@ -39,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def refreshing
-    user = User.find_by(id: user.id)
+    User.find_by(id: self.id)
   end
 
 end
