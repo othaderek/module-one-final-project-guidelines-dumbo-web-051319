@@ -1,6 +1,6 @@
-# def ruby_clear
-#   system "clear" or system "cls"
-# end
+def ruby_clear
+  system "clear" or system "cls"
+end
 
 def splash
   puts "                         ____   ___   ____     "
@@ -30,55 +30,37 @@ def spinner
   ruby_clear
 end
 
+def list_characters
+
+end
+
 def main_menu_list_input_prompt
   main_menu_prompt = TTY::Prompt.new
   main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
 end
 
 def main_menu_input_selector(input, user)
-
+  # binding.pry
   case input
   when "List Characters"
-    puts "Characters List "
-    Character.all.each_with_index do |character, index|
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-      puts ""
-      puts "Character number #{index+1}"
-      puts "Name: #{character.name}"
-      puts "Race: #{character.race}"
-      puts "Class: #{character.class_name}"
-      puts ""
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-    end
-    puts "Press the any key to return to main menu."
-    gets.chomp
+    user.print_characters
 
   when "List Spells"
-    puts "Spells List"
-    Spell.all.each_with_index do |spell, index|
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-      puts ""
-      puts "Spell number #{index+1}"
-      puts "Spell name: #{spell.name}"
-      puts "Spell description: #{spell.description}"
-      puts ""
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-    end
-    puts "Press the any key to return to main menu."
-    gets.chomp
+    user.print_spells
 
   when "Create Character"
     puts "Creating Character"
-    
+
 
   when "Edit Character"
     puts "Editing Character"
+
 
   when "Delete Character"
     puts "Delete Character"
 
   when "Exit"
-    puts "Exit"
+    puts "Exiting"
   end
 
 end
@@ -92,6 +74,3 @@ def main_menu_loop(user)
     main_menu_input_selector(main_input, user)
   end
 end
-
-# user1 = User.all[0]
-# menu_loop(user1)
