@@ -31,8 +31,32 @@ def main_menu_input_selector(input, user)
   case input
   when "List Characters"
     puts "List Character"
+    Character.all.each_with_index do |character, index|
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts ""
+      puts "Character number #{index+1}"
+      puts "Name: #{character.name}"
+      puts "Race: #{character.race}"
+      puts "Class: #{character.class_name}"
+      puts ""
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+    end
+    puts "Press the any key to return to main menu."
+    gets.chomp
   when "List Spells"
     puts "List Spells"
+    puts "List Character"
+    Spell.all.each_with_index do |spell, index|
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts ""
+      puts "Spell number #{index+1}"
+      puts "Spell name: #{spell.name}"
+      puts "Spell description: #{spell.description}"
+      puts ""
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+    end
+    puts "Press the any key to return to main menu."
+    gets.chomp
   when "Create Character"
     puts "Create Character"
   when "Edit Character"
