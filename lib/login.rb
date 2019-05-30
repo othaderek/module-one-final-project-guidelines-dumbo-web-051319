@@ -1,3 +1,11 @@
+def list_input_prompt
+  prompt = TTY::Prompt.new
+  input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
+  # binding.pry
+  puts 7.chr
+  input = input.strip
+  input_selector(input)
+end
 
 def login
   r = []
@@ -26,13 +34,4 @@ def login
   else
     puts "Try again!!"
   end
-end
-
-def list_input_prompt
-  prompt = TTY::Prompt.new
-  input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
-  # binding.pry
-  puts 7.chr
-  input = input.strip
-  input_selector(input)
 end
