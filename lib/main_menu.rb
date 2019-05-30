@@ -1,5 +1,3 @@
-require "pry"
-
 def ruby_clear
   system "clear" or system "cls"
 end
