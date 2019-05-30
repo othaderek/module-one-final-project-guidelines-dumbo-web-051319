@@ -1,7 +1,6 @@
 require_relative '../config/environment'
 
-user1 = User.all[0]
-menu_loop(user1)
+spinner
+menu_loop
 
-binding.pry
 puts "Goodbye"
