@@ -22,7 +22,6 @@ def input_selector(input, length)
 
   intput = input.to_i
   if intput > 0 && intput < length +1
-    puts "Is character"
     intput -1
   else
     case input
@@ -45,10 +44,12 @@ def input_selector(input, length)
 end
 
 def menu_loop(user)
-
+  # main_prompt = TTY::Prompt.new
   input = ""
   while input != "q"
     splash
+    # main_prompt needs to be fed an array of characters from user in order to work
+    # input = main_prompt.select("", ["Create character".center(60), "Create Spell".center(60), "Exit".center(60)])
     list_input_prompt(user)
     input = gets.chomp
     index = input_selector(input, user.characters.length)
