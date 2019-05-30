@@ -50,7 +50,7 @@ def main_menu_input_selector(input, user)
 
   when "Create Character"
     puts "Creating Character"
-    Character.new()
+    create_character_prompt
 
   when "Edit Character"
     puts "Editing Character"

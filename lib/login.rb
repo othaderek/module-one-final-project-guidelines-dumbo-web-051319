@@ -58,5 +58,6 @@ def create_user
   user_pw = prompt.mask("Password")
   user = User.create(name: user_name, password: user_pw)
   puts "Great work #{user_pw}!!"
-  main_menu_loop(user)
+  spinner
+  login
 end

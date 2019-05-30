@@ -3,10 +3,12 @@ def character_create_splash
   puts "********************************"
   puts "****   Creating Character   ****"
   puts "********************************"
+  sleep(1)
+  character_name_prompt
 end
 
 def character_name_prompt
-
+  ruby_clear
   puts "********************************"
   puts "***  Enter Character's name  ***"
   puts "********************************"
