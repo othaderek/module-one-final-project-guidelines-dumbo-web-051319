@@ -1,6 +1,6 @@
-def ruby_clear
-  system "clear" or system "cls"
-end
+# def ruby_clear
+#   system "clear" or system "cls"
+# end
 
 def splash
   puts "                         ____   ___   ____     "
@@ -30,10 +30,39 @@ def spinner
   ruby_clear
 end
 
-def invalid_input_prompt
-  puts ""
-  puts "********************************"
-  puts "****     Invalid Input      ****"
-  puts "********************************"
-  puts ""
+def main_menu_list_input_prompt
+  main_menu_prompt = TTY::Prompt.new
+  main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
 end
+
+def main_menu_input_selector(input, user)
+
+  case input
+  when "List Characters"
+    puts "List Character"
+  when "List Spells"
+    puts "List Spells"
+  when "Create Character"
+    puts "Create Character"
+  when "Edit Character"
+    puts "Edit Character"
+  when "Delete Character"
+    puts "Delete Character"
+  when "Exit"
+    puts "Exit"
+  end
+
+end
+
+def main_menu_loop(user)
+  main_input = ""
+  # user1 = User.all[0]
+  while main_input != "Exit"
+    splash
+    main_input = main_menu_list_input_prompt
+    main_menu_input_selector(main_input, user)
+  end
+end
+
+# user1 = User.all[0]
+# menu_loop(user1)

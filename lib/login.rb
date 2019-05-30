@@ -1,10 +1,14 @@
 def list_input_prompt
+<<<<<<< HEAD
   splash
+=======
+>>>>>>> d195dab253fd1b03d75168a8e2414876b85a7bb0
   prompt = TTY::Prompt.new
   input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
   # binding.pry
   puts 7.chr
   input = input.strip
+<<<<<<< HEAD
   login_input_selector(input)
 end
 
@@ -19,6 +23,10 @@ def login_input_selector(input)
   end
 end
 
+=======
+  input_selector(input)
+end
+>>>>>>> d195dab253fd1b03d75168a8e2414876b85a7bb0
 
 def login
   r = []
@@ -48,6 +56,7 @@ def login
     puts "Try again!!"
   end
 end
+<<<<<<< HEAD
 
 def create_user
   prompt = TTY::Prompt.new
@@ -57,3 +66,5 @@ def create_user
   puts "Great work #{user_pw}!!"
   menu_loop
 end
+=======
+>>>>>>> d195dab253fd1b03d75168a8e2414876b85a7bb0
