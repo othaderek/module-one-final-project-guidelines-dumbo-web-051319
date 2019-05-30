@@ -23,10 +23,6 @@ def login_input_selector(input)
   end
 end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f6d0f49b98ba51a968baf206a9fb85fda462e5cc
 def login
   r = []
   font = TTY::Font.new(:standard)
@@ -48,6 +44,7 @@ def login
       spinner
       puts "Success!"
       puts "Welcome #{p.name}"
+      p
     else
       list_input_prompt
     end
