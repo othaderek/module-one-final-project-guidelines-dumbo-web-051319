@@ -21,6 +21,15 @@ def splash
   puts ""
 end
 
+def spinner
+  ruby_clear
+  spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :shark)
+  spinner.auto_spin # Automatic animation with default interval
+  sleep(2.5) # Perform task
+  spinner.stop('Done!') # Stop animation
+  ruby_clear
+end
+
 def main_menu_list_input_prompt
   main_menu_prompt = TTY::Prompt.new
   main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
