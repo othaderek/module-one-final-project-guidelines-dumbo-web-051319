@@ -1,6 +1,7 @@
 require_relative '../config/environment'
-user = list_input_prompt
+
 spinner
+user = list_input_prompt
 main_menu_loop(user)
 
 puts "Goodbye"
