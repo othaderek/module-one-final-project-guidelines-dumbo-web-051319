@@ -35,6 +35,7 @@ def list_characters
 end
 
 def main_menu_list_input_prompt
+  splash
   main_menu_prompt = TTY::Prompt.new
   main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
 end
@@ -66,8 +67,9 @@ def main_menu_input_selector(input, user)
 end
 
 def main_menu_loop(user)
+  list_input_prompt
   main_input = ""
-  # user1 = User.all[0]
+    # user1 = User.all[0]
   while main_input != "Exit"
     splash
     main_input = main_menu_list_input_prompt
