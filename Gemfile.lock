@@ -45,7 +45,6 @@ GEM
     tty-color (0.4.3)
     tty-cursor (0.7.0)
     tty-font (0.3.0)
-    tty-progressbar (0.2.0)
     tty-prompt (0.19.0)
       necromancer (~> 0.5.0)
       pastel (~> 0.7.0)
@@ -55,6 +54,8 @@ GEM
       tty-screen (~> 0.7)
       wisper (~> 2.0.0)
     tty-screen (0.7.0)
+    tty-spinner (0.9.1)
+      tty-cursor (~> 0.7)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     wisper (2.0.0)
@@ -68,8 +69,8 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   tty-font
-  tty-progressbar
   tty-prompt
+  tty-spinner
 
 BUNDLED WITH
    1.17.3
