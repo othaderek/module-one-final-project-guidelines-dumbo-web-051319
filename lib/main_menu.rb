@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 def ruby_clear
   system "clear" or system "cls"
 end
@@ -29,6 +31,7 @@ def splash
   puts "                \\____|_|  \\___|\\__,_|\\__\\___/|_|        "
   puts ""
 end
+>>>>>>> joetha
 
 def exit_program_prompt
   puts ""
@@ -38,14 +41,46 @@ def exit_program_prompt
   puts ""
 end
 
-def invalid_input_prompt
+def list_input_prompt(user)
   puts ""
-  puts "********************************"
-  puts "****     Invalid Input      ****"
-  puts "********************************"
+  if user.characters
+    user.characters.each_with_index { |character, index| puts "                         #{index+1}:  #{character.name}" }
+  end
+  puts "                         C:  Create character"
+  puts "                         S:  Create spell"
+  puts "                         q:  Exit program"
   puts ""
 end
 
+<<<<<<< HEAD
+def input_selector(input, length)
+
+  intput = input.to_i
+  if intput > 0 && intput < length +1
+    intput -1
+  else
+    case input
+    when "C"
+      ruby_clear
+      puts "create character"
+    when "S"
+      ruby_clear
+      puts "Create Spell"
+      ruby_clear
+    when "q"
+      ruby_clear
+      exit_program_prompt
+    else
+      ruby_clear
+      invalid_input_prompt
+    end
+  end
+
+end
+
+def menu_loop(user)
+  # main_prompt = TTY::Prompt.new
+=======
 def input_selector(input)
   case input
   when "Login"
@@ -67,11 +102,16 @@ def create_user
 end
 
 def menu_loop
+>>>>>>> joetha
   input = ""
   while input != "q"
     splash
-    list_input_prompt
+    # main_prompt needs to be fed an array of characters from user in order to work
+    # input = main_prompt.select("", ["Create character".center(60), "Create Spell".center(60), "Exit".center(60)])
+    list_input_prompt(user)
     input = gets.chomp
-    input_selector(input)
+    index = input_selector(input, user.characters.length)
+    character_menu_loop(user.characters[index])
   end
+
 end
