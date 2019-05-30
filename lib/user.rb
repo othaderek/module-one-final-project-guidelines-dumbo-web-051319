@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
       puts ""
       puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
     end
-    puts "Press the any key to return to main menu."
-    gets.chomp
   end
 
   def print_spells
@@ -34,8 +32,12 @@ class User < ActiveRecord::Base
         puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
       end
     end
-    puts "Press the any key to return to main menu."
+    puts "Press the any key to return to continue."
     gets.chomp
+  end
+
+  def refreshing
+    User.find_by(id: self.id)
   end
 
 end
