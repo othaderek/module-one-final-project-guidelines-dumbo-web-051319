@@ -1,8 +1,11 @@
+def ruby_clear
+ system "clear" or system "cls"
+end
+
 def list_input_prompt
   splash
   prompt = TTY::Prompt.new
   input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
-  # binding.pry
   puts 7.chr
   input = input.strip
   login_input_selector(input)
@@ -19,28 +22,27 @@ def login_input_selector(input)
   end
 end
 
-
-
-
 def login
   r = []
   font = TTY::Font.new(:standard)
   prompt = TTY::Prompt.new
   pastel = Pastel.new
-  # spinner
+  spinner
   puts pastel.green(font.write("LOGIN"))
   user_name = prompt.ask('username:')
+  ruby_clear
   puts 7.chr
   User.all.collect{|u| r << u if u.name == user_name}
   p = r.pop
   if p.name == user_name
     puts 7.chr
-    # spinner
+    spinner
     puts pastel.green(font.write("PASSWORD"))
     pw = prompt.mask("password:")
-    # binding.pry
+    puts 7.chr
+    ruby_clear
     if pw == p.password
-      # spinner
+      spinner
       puts "Success!"
       puts "Welcome #{p.name}"
       p
@@ -58,5 +60,6 @@ def create_user
   user_pw = prompt.mask("Password")
   user = User.create(name: user_name, password: user_pw)
   puts "Great work #{user_pw}!!"
-  # menu_loop
+  spinner
+  login
 end

@@ -96,4 +96,5 @@ def create_character_prompt(user)
   c = Character.create(name: c_name, race: c_race, class_name: c_class)
   u = UserCharacter.create(user_id: user.id, character_id: c.id)
   character_save
+  ruby_clear  
 end
