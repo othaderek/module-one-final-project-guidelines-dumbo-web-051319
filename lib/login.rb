@@ -6,7 +6,6 @@ def list_input_prompt
   splash
   prompt = TTY::Prompt.new
   input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
-  # binding.pry
   puts 7.chr
   input = input.strip
   login_input_selector(input)
