@@ -50,27 +50,33 @@ def main_menu_input_selector(input, user)
 
   when "Create Character"
     puts "Creating Character"
-    create_character_prompt
 
   when "Edit Character"
     puts "Editing Character"
 
-
   when "Delete Character"
-    puts "Delete Character"
+    user.print_characters
+    delete_prompt = TTY::Prompt.new
+    delete_index = delete_prompt.ask("Select character to be deleted by entering an index...")
+    # delete_name = delete_prompt.ask("Select character to be deleted by entering an name...")
+    # main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
 
+    character_x = user.characters[(delete_index.to_i) -1]
+    # character_x = user.characters.find_by(name: delete_name)
+    character_x.destroy
   when "Exit"
     puts "Exiting"
   end
-
+  user
 end
 
 def main_menu_loop(user)
   main_input = ""
+  user.characters << Character.all[0]
   # user1 = User.all[0]
   while main_input != "Exit"
     splash
     main_input = main_menu_list_input_prompt
-    main_menu_input_selector(main_input, user)
+    user = main_menu_input_selector(main_input, user)
   end
 end

@@ -16,14 +16,15 @@ spell_list4 = CharacterSpell.create(character_id: character1.id, spell_id: spell
 spell_list5 = CharacterSpell.create(character_id: character2.id, spell_id: spell1.id)
 
 user1 = User.create(name: "Otha", password: "Otha")
+user2 = User.create(name: "1", password: "1")
 # user1
 # user1
 # user1
 # user1
 
 uchar1 = UserCharacter.create(user_id: user1.id, character_id: character3.id)
-# uchar2
-# uchar3
-# uchar4
+uchar2 = UserCharacter.create(user_id: user2.id, character_id: character1.id)
+uchar3 = UserCharacter.create(user_id: user2.id, character_id: character2.id)
+uchar4 = UserCharacter.create(user_id: user2.id, character_id: character3.id)
 # uchar5
 # uchar6
