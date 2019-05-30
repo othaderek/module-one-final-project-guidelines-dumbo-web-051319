@@ -1,3 +1,24 @@
+def list_input_prompt
+  splash
+  prompt = TTY::Prompt.new
+  input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
+  # binding.pry
+  puts 7.chr
+  input = input.strip
+  login_input_selector(input)
+end
+
+def login_input_selector(input)
+  case input
+  when "Login"
+    ruby_clear
+    login
+  when "Create User"
+    ruby_clear
+    create_user
+  end
+end
+
 
 def login
   r = []
@@ -19,7 +40,7 @@ def login
       spinner
       puts "Success!"
       puts "Welcome #{p.name}"
-      input_selector(p)
+
     else
       list_input_prompt
     end
@@ -28,11 +49,11 @@ def login
   end
 end
 
-def list_input_prompt
+def create_user
   prompt = TTY::Prompt.new
-  input = prompt.select("Welcome!".center(65), ["Login".center(60), "Create User".center(60)])
-  # binding.pry
-  puts 7.chr
-  input = input.strip
-  input_selector(input)
+  user_name = prompt.ask("Enter you username:")
+  user_pw = prompt.mask("Password")
+  user = User.create(name: user_name, password: user_pw)
+  puts "Great work #{user_pw}!!"
+  menu_loop
 end

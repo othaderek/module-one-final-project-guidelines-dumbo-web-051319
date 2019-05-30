@@ -21,6 +21,15 @@ def splash
   puts ""
 end
 
+def spinner
+  ruby_clear
+  spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :shark)
+  spinner.auto_spin # Automatic animation with default interval
+  sleep(2.5) # Perform task
+  spinner.stop('Done!') # Stop animation
+  ruby_clear
+end
+
 def invalid_input_prompt
   puts ""
   puts "********************************"

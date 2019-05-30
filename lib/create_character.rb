@@ -12,8 +12,10 @@ def character_name_prompt
   puts "********************************"
   puts ""
 
-  name = gets.chomp
-
+  prompt = TTY::Prompt.new
+  user_name = prompt.ask('What is your characters name?:')
+  puts 7.chr
+  user_name
 end
 
 def character_race_prompt
@@ -34,7 +36,10 @@ def character_race_prompt
   puts "  Tiefling"
   puts ""
 
-  race = gets.chomp
+  prompt = TTY::Prompt.new
+  race = prompt.ask("What is your character's race?:")
+  puts 7.chr
+  race
 
 end
 
@@ -59,8 +64,10 @@ def character_class_prompt
     puts "  Wizard"
     puts ""
 
-    character_class = gets.chomp
-
+    prompt = TTY::Prompt.new
+    class_name = prompt.ask("What is your character's class?:")
+    puts 7.chr
+    class_name
 end
 
 def character_save
