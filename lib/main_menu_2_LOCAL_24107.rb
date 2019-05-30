@@ -55,17 +55,8 @@ def main_menu_input_selector(input, user)
 
 
   when "Delete Character"
-<<<<<<< HEAD
     puts "Delete Character"
 
-=======
-    user.print_characters
-    delete_prompt = TTY::Prompt.new
-    delete_index = delete_prompt.ask("Select character to be deleted by entering an index...")
-    character_x = user.characters[(delete_index.to_i) -1]
-    # character_x = user.characters.find_by(name: delete_name)
-    character_x.destroy
->>>>>>> 93b54dc5bdc3b3a5653e9f06a53dc6c9aafdbd2b
   when "Exit"
     puts "Exiting"
   end

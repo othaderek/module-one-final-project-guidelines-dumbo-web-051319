@@ -21,6 +21,11 @@ def splash
   puts ""
 end
 
+def get_pause
+  puts "Press the any key to return to continue."
+  gets.chomp
+end
+
 def spinner
   ruby_clear
   spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :shark)
@@ -33,8 +38,6 @@ end
 def main_menu_list_input_prompt
   main_menu_prompt = TTY::Prompt.new
   main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
-  puts 7.chr
-  main_input
 end
 
 def main_menu_input_selector(input, user)
@@ -42,41 +45,40 @@ def main_menu_input_selector(input, user)
   case input
   when "List Characters"
     user.print_characters
-
+    get_pause
   when "List Spells"
     user.print_spells
-
+    get_pause
   when "Create Character"
     puts "Creating Character"
-    create_character_prompt(user)
 
   when "Edit Character"
     puts "Editing Character"
 
-
   when "Delete Character"
-<<<<<<< HEAD
-    puts "Delete Character"
-
-=======
     user.print_characters
     delete_prompt = TTY::Prompt.new
     delete_index = delete_prompt.ask("Select character to be deleted by entering an index...")
+    # delete_name = delete_prompt.ask("Select character to be deleted by entering an name...")
+    # main_input = main_menu_prompt.select("Select Option", ["List Characters", "List Spells", "Create Character", "Edit Character", "Delete Character", "Exit"])
+
     character_x = user.characters[(delete_index.to_i) -1]
     # character_x = user.characters.find_by(name: delete_name)
     character_x.destroy
->>>>>>> 93b54dc5bdc3b3a5653e9f06a53dc6c9aafdbd2b
   when "Exit"
     puts "Exiting"
   end
-
+  user
 end
 
 def main_menu_loop(user)
   main_input = ""
+  user.characters << Character.all[0]
+  # user1 = User.all[0]
   while main_input != "Exit"
     splash
     main_input = main_menu_list_input_prompt
     main_menu_input_selector(main_input, user)
+    user = user.refreshing
   end
 end
