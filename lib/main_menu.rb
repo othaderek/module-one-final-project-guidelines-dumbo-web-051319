@@ -4,6 +4,15 @@ def ruby_clear
   system "clear" or system "cls"
 end
 
+def spinner
+  ruby_clear
+  spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :shark)
+  spinner.auto_spin # Automatic animation with default interval
+  sleep(2.5) # Perform task
+  spinner.stop('Done!') # Stop animation
+  ruby_clear
+end
+
 def splash
   puts "                         ____   ___   ____     "
   puts "                        |  _ \\ ( _ ) |  _ \\  "
@@ -39,11 +48,7 @@ def invalid_input_prompt
   puts ""
 end
 
-
-
 def input_selector(input)
-  # binding.pry
-
   case input
   when "Login"
     ruby_clear
@@ -51,27 +56,7 @@ def input_selector(input)
   when "Create User"
     ruby_clear
     create_user
-  else
-  # when "3"
-  #   ruby_clear
-  #   create_character_prompt
-  #   ruby_clear
-  # when "4"
-  #   ruby_clear
-  #   delete_character_prompt
-  # when "5"
-  #   ruby_clear
-  #   select_character_prompt
-  #   character_paperdoll
-  #   ruby_clear
-  # when "q"
-  #   ruby_clear
-  #   exit_program_prompt
-  # else
-  #   ruby_clear
-  #   invalid_input_prompt
   end
-
 end
 
 def create_user
@@ -82,7 +67,6 @@ def create_user
   puts "Great work #{user_pw}!!"
   menu_loop
 end
-
 
 def menu_loop
   input = ""
