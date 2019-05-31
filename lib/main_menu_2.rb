@@ -21,6 +21,35 @@ def splash
   puts ""
 end
 
+def ascii_wizard
+  puts "         /^\\
+    /\\   'V'
+   /__\\   I
+  //..\\\\  I
+  \\].`[/  I
+  /l\\/j\\  (]
+ /. ~~ ,\\/I
+ \\\\L__j^\\/I
+  \\/--v}  I
+  |    |  I
+  |    |  I
+  |    l  I
+_/j  L l\\_!"
+end
+
+def ascii_knight
+  puts "       !
+      .-.
+    __|=|__
+   (_/`-`\\_)
+   //\\___/\\\\
+   <>/   \\<>
+    \\|_._|/
+     <_I_>
+      |||
+     /_|_\\"
+end
+
 def get_pause
   prompt = TTY::Prompt.new
   prompt.ask("")

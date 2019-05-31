@@ -87,6 +87,8 @@ def character_save(user)
   puts ".".center(32)
   sleep 0.6
   puts ".".center(32)
+  ascii_wizard
+  get_pause
   user.refreshing
 end
 

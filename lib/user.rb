@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   def print_characters
     puts "Characters List "
     self.characters.each_with_index do |character, index|
+      ascii_knight
       puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
       puts ""
       puts "Character: #{index+1}"
