@@ -4,7 +4,7 @@ def character_create_splash
   puts "****   Creating Character   ****"
   puts "********************************"
   sleep(1)
-  character_name_prompt
+  # character_name_prompt
 end
 
 def character_name_prompt
@@ -88,11 +88,12 @@ def character_save
   puts ".".center(32)
 end
 
-def create_character_prompt
+def create_character_prompt(user)
   character_create_splash
   c_name = character_name_prompt
   c_race = character_race_prompt
   c_class = character_class_prompt
-  Character.create(name: c_name, race: c_race, class_name: c_class)
+  c = Character.create(name: c_name, race: c_race, class_name: c_class)
+  u = UserCharacter.create(user_id: user.id, character_id: c.id)
   character_save
 end
