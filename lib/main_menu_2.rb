@@ -22,7 +22,7 @@ def splash
 end
 
 def get_pause
-  puts "Press the any key to return to continue."
+  puts "Press any to continue."
   gets.chomp
 end
 
@@ -44,23 +44,39 @@ def main_menu_input_selector(input, user)
   # binding.pry
   case input
   when "List Characters"
-    user.print_characters
+    if user.characters.length > 0
+      user.print_characters
+    else
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts "User has no characters."
+      puts ""
+    end
     get_pause
+
   when "List Spells"
-    user.print_spells
+    if user.characters.length > 0
+      user.print_spells
+    else
+      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts "User has no characters."
+      puts ""
+    end
     get_pause
+
   when "Create Character"
     puts "Creating Character"
 
   when "Edit Character"
     puts "Editing Character"
 
+
   when "Delete Character"
     user.print_characters
     delete_prompt = TTY::Prompt.new
-    delete_index = delete_prompt.ask("Select character to be deleted by entering an index...")
-    character_x = user.characters[(delete_index.to_i) -1]
-    # character_x = user.characters.find_by(name: delete_name)
+    prompt_array = user.characters.map {|character| character.name}
+    delete_name = delete_prompt.select("Select Character to delete.", prompt_array)
+    delete_index = prompt_array.find_index(delete_name)
+    character_x = user.characters[(delete_index.to_i)]
     character_x.destroy
   when "Exit"
     puts "Exiting"
@@ -70,7 +86,7 @@ end
 
 def main_menu_loop(user)
   main_input = ""
-  user.characters << Character.all[0]
+  # user.characters << Character.all[0]
   # user1 = User.all[0]
   while main_input != "Exit"
     splash
