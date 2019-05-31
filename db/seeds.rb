@@ -8,7 +8,7 @@ spell2 = Spell.create(name: "Absorb Elements", description: "The spell captures 
 spell3 = Spell.create(name: "Acid Arrow", description: "A shimmering green arrow streaks toward a target within range and bursts in a spray of acid.")
 spell4 = Spell.create(name: "Animal Messenger", description: "By means of this spell, you use an animal to deliver a message.")
 spell5 = Spell.create(name: "Animate Dead", description: "This spell creates an undead servant.")
-spell6 = Spell.create(name: "Bored", description: "This spell makes the user and anyone in a 15 foot radius mildly bored, they may start scrolling mindlessly through their phone or watching episodes of The Marvelous Mrs. Maisel. Not a bad show btw, would reccommend.")
+spell6 = Spell.create(name: "Bored", description: "This spell makes the user and anyone in a 15 foot radius mildly bored, they may start scrolling mindlessly through their phone or watching episodes of The Marvelous Mrs. Maisel. Gets kinda repetitive, not a bad show though, would reccommend.")
 
 
 spell_list1 = CharacterSpell.create(character_id: character1.id, spell_id: spell1.id)

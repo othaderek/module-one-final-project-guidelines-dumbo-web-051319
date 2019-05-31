@@ -50,13 +50,19 @@ def login
         puts "Welcome #{p.name}"
         p
       else
-        list_input_prompt
+        puts pastel.red(font.write("TRY AGAIN!"))
+        get_pause
+        login
       end
     else
       puts pastel.red(font.write("TRY AGAIN!"))
+      get_pause
+      login
     end
     else
       puts pastel.red(font.write("TRY AGAIN!"))
+      get_pause
+      login
     end
   else
     puts pastel.red(font.write("TRY AGAIN!"))
