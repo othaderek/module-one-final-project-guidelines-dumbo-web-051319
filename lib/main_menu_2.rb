@@ -77,9 +77,10 @@ def main_menu_input_selector(input, user)
   when "Delete Character"
     user.print_characters
     delete_prompt = TTY::Prompt.new
-    delete_index = delete_prompt.ask("Select character to be deleted by entering an index...")
-    character_x = user.characters[(delete_index.to_i) -1]
-    # character_x = user.characters.find_by(name: delete_name)
+    prompt_array = user.characters.map {|character| character.name}
+    delete_name = delete_prompt.select("Select Character to delete.", prompt_array)
+    delete_index = prompt_array.find_index(delete_name)
+    character_x = user.characters[(delete_index.to_i)]
     character_x.destroy
     ruby_clear
   when "Exit"

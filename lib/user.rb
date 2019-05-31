@@ -35,34 +35,32 @@ class User < ActiveRecord::Base
   end
 
   def edit_characters(user)
-    puts "Characters List "
-    self.characters.each_with_index do |character, index|
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-      puts ""
-      puts "Character: #{index+1}"
-      puts "Name: #{character.name}"
-      puts "Race: #{character.race}"
-      puts "Class: #{character.class_name}"
-      puts ""
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
-    end
+    user.print_characters
     edit_prompt = TTY::Prompt.new
-    edit_index = edit_prompt.ask("Select character to be edited by entering an index...")
-    i = edit_index.to_i
-    character_x = user.characters[i - 1]
+    prompt_array = user.characters.map {|character| character.name}
+    edit_name = edit_prompt.select("Select Character to edit.", prompt_array)
+    edit_index = prompt_array.find_index(edit_name)
+    character_x = user.characters[(edit_index.to_i)]
     new_name = edit_prompt.ask("What would you like to change name to??")
-    get_pause
     character_x.name= "#{new_name}"
+    get_pause
     puts "Congratulations!! You successfully changed your characters name to #{new_name}!! Isn't that exciting?!?!..."
     puts "."
     sleep(1)
     puts ".."
     sleep(2)
     puts "..."
-    # character_x = user.characters.find_by(name: delete_name)
     character_x.save
     ruby_clear
   end
+
+  # user.print_characters
+  # edit_prompt = TTY::Prompt.new
+  # prompt_array = user.characters.map {|character| character.name}
+  # edit_name = edit_prompt.select("Select Character to edit.", prompt_array)
+  # delete_index = prompt_array.find_index(edit_name)
+  # character_x = user.characters[(delete_index.to_i)]
+  # character_x.destroy
 
   def refreshing
     User.find_by(id: self.id)
