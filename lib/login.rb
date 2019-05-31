@@ -36,29 +36,29 @@ def login
   if user_name != nil
     User.all.collect{|u| r << u if u.name == user_name}
     p = r.pop
-    if p.name == user_name
+    if p != nil && p.name == user_name
       puts 7.chr
       spinner
       puts pastel.green(font.write("PASSWORD"))
       pw = prompt.mask("password:")
       puts 7.chr
       ruby_clear
-    if pw != nil
-      if pw == p.password
-        spinner
-        puts "Success!"
-        puts "Welcome #{p.name}"
-        p
+      if pw != nil && p.name == user_name
+        if pw == p.password
+          spinner
+          puts "Success!"
+          puts "Welcome #{p.name}"
+          p
+        else
+          puts pastel.red(font.write("TRY AGAIN!"))
+          get_pause
+          login
+        end
       else
         puts pastel.red(font.write("TRY AGAIN!"))
         get_pause
         login
       end
-    else
-      puts pastel.red(font.write("TRY AGAIN!"))
-      get_pause
-      login
-    end
     else
       puts pastel.red(font.write("TRY AGAIN!"))
       get_pause

@@ -22,24 +22,10 @@ end
 
 def character_race_prompt
 
-  puts ""
-  puts "********************************"
-  puts "***  Select Character's race ***"
-  puts "********************************"
-  puts ""
-  puts "  Dragonborn"
-  puts "  Dwarf"
-  puts "  Elf"
-  puts "  Gnome"
-  puts "  Half-Elf"
-  puts "  Halfling"
-  puts "  Half-Orc"
-  puts "  Human"
-  puts "  Tiefling"
-  puts ""
-
+  ruby_clear
+  character_array = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Human", "Tiefling"]
   prompt = TTY::Prompt.new
-  race = prompt.ask("Type character race:")
+  race = prompt.select("Select character race", character_array)
   puts 7.chr
   race
 
@@ -47,27 +33,10 @@ end
 
 def character_class_prompt
 
-    puts ""
-    puts "**********************************"
-    puts "***  Select Character's Class  ***"
-    puts "**********************************"
-    puts ""
-    puts "  Barbarian"
-    puts "  Bard"
-    puts "  Cleric"
-    puts "  Druid"
-    puts "  Fighter"
-    puts "  Monk"
-    puts "  Paladin"
-    puts "  Ranger"
-    puts "  Rogue"
-    puts "  Sorcerer"
-    puts "  Warlock"
-    puts "  Wizard"
-    puts ""
-
+    ruby_clear
+    class_array = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
     prompt = TTY::Prompt.new
-    class_name = prompt.ask("Type character class:")
+    class_name = prompt.select("Select character class", class_array)
     puts 7.chr
     class_name
 end
@@ -88,7 +57,13 @@ def character_save(user)
   sleep 0.6
   puts ".".center(32)
   ascii_wizard
+  font = TTY::Font.new(:standard)
+  prompt = TTY::Prompt.new
+  pastel = Pastel.new
+  puts pastel.green(font.write("CONGRATULATIONS!!"))
   get_pause
+
+  ruby_clear
   user.refreshing
 end
 
