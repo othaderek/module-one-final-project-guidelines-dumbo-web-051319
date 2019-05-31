@@ -30,27 +30,38 @@ def login
   spinner
   puts pastel.green(font.write("LOGIN"))
   user_name = prompt.ask('username:')
+
   ruby_clear
   puts 7.chr
-  User.all.collect{|u| r << u if u.name == user_name}
-  p = r.pop
-  if p.name == user_name
-    puts 7.chr
-    spinner
-    puts pastel.green(font.write("PASSWORD"))
-    pw = prompt.mask("password:")
-    puts 7.chr
-    ruby_clear
-    if pw == p.password
+  if user_name != nil
+    User.all.collect{|u| r << u if u.name == user_name}
+    p = r.pop
+    if p.name == user_name
+      puts 7.chr
       spinner
-      puts "Success!"
-      puts "Welcome #{p.name}"
-      p
+      puts pastel.green(font.write("PASSWORD"))
+      pw = prompt.mask("password:")
+      puts 7.chr
+      ruby_clear
+    if pw != nil
+      if pw == p.password
+        spinner
+        puts "Success!"
+        puts "Welcome #{p.name}"
+        p
+      else
+        list_input_prompt
+      end
     else
-      list_input_prompt
+      puts pastel.red(font.write("TRY AGAIN!"))
+    end
+    else
+      puts pastel.red(font.write("TRY AGAIN!"))
     end
   else
-    puts "Try again!!"
+    puts pastel.red(font.write("TRY AGAIN!"))
+    get_pause
+    login
   end
 end
 

@@ -71,6 +71,8 @@ def main_menu_input_selector(input, user)
 
   when "Edit Character"
     puts "Editing Character"
+    user.edit_characters(user)
+    # get_pause
 
   when "Delete Character"
     user.print_characters

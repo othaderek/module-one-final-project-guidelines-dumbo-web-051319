@@ -15,7 +15,7 @@ def character_name_prompt
   puts ""
 
   prompt = TTY::Prompt.new
-  user_name = prompt.ask('What is your characters name?:')
+  user_name = prompt.ask('Type character name:')
   puts 7.chr
   user_name
 end
@@ -39,7 +39,7 @@ def character_race_prompt
   puts ""
 
   prompt = TTY::Prompt.new
-  race = prompt.ask("What is your character's race?:")
+  race = prompt.ask("Type character race:")
   puts 7.chr
   race
 
@@ -67,12 +67,13 @@ def character_class_prompt
     puts ""
 
     prompt = TTY::Prompt.new
-    class_name = prompt.ask("What is your character's class?:")
+    class_name = prompt.ask("Type character class:")
     puts 7.chr
     class_name
 end
 
-def character_save
+def character_save(user)
+  ruby_clear
   puts ""
   puts "********************************"
   puts "****    Saving Character    ****"
@@ -86,6 +87,7 @@ def character_save
   puts ".".center(32)
   sleep 0.6
   puts ".".center(32)
+  user.refreshing
 end
 
 def create_character_prompt(user)
@@ -95,6 +97,5 @@ def create_character_prompt(user)
   c_class = character_class_prompt
   c = Character.create(name: c_name, race: c_race, class_name: c_class)
   u = UserCharacter.create(user_id: user.id, character_id: c.id)
-  character_save
-  ruby_clear  
+  character_save(user)
 end
