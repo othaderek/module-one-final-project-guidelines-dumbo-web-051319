@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     puts "Character Spell List"
     self.characters.each_with_index do |character, c_index|
       puts "∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆"
-      # puts "Character: #{c_index+1}"
+      puts ""
       puts pastel.yellow("  ¬ Name: #{character.name}")
       puts pastel.yellow("  ¬ Race: #{character.race}")
       puts pastel.yellow("  ¬ Class: #{character.class_name}")
@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
       end
     end
   end
+
 
   def edit_characters(user)
     puts "Editing Character"
