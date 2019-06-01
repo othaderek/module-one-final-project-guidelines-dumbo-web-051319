@@ -6,14 +6,18 @@ class User < ActiveRecord::Base
     pastel = Pastel.new
     puts "Characters List "
     self.characters.each_with_index do |character, index|
+      puts ""
       ascii_knight
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
       puts ""
-      puts pastel.yellow("    Name: #{character.name}")
-      puts pastel.yellow("    Race: #{character.race}")
-      puts pastel.yellow("    Class: #{character.class_name}")
+      puts "∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆"
       puts ""
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts ""
+      puts pastel.yellow("  ¬ Name: #{character.name}")
+      puts pastel.yellow("  ¬ Race: #{character.race}")
+      puts pastel.yellow("  ¬ Class: #{character.class_name}")
+      puts ""
+      puts ""
+      puts "∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆"
     end
   end
 
@@ -21,18 +25,18 @@ class User < ActiveRecord::Base
     pastel = Pastel.new
     puts "Character Spell List"
     self.characters.each_with_index do |character, c_index|
-      puts "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+"
+      puts "∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆∞∞∞∞∆∆∆∆"
       # puts "Character: #{c_index+1}"
-      puts pastel.yellow("    Name: #{character.name}")
-      puts pastel.yellow("    Race: #{character.race}")
-      puts pastel.yellow("    Class: #{character.class_name}")
+      puts pastel.yellow("  ¬ Name: #{character.name}")
+      puts pastel.yellow("  ¬ Race: #{character.race}")
+      puts pastel.yellow("  ¬ Class: #{character.class_name}")
       character.spells.each_with_index do |spell, s_index|
         puts ""
-        puts pastel.blue("        Spell: #{s_index+1}")
-        puts pastel.blue("        Spell name: #{spell.name}")
-        puts pastel.blue("        Spell description: #{spell.description}")
+        puts pastel.blue("      ¬ Spell: #{s_index+1}")
+        puts pastel.blue("      ¬ Spell name: #{spell.name}")
+        puts pastel.blue("      ¬ Spell description: #{spell.description}")
         puts ""
-        puts "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+        puts ""
       end
     end
   end
